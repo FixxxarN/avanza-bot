@@ -20,10 +20,10 @@ List of modules used:
 
 #### TODO
 
-- [ ] Create a class for the bot
-- [ ] Create a function that creates and returns the avanza credentials
-- [ ] Create a function that validates the user
-- [ ] Create a function that validates totpSecret or totpCode
-- [ ] Create a function that fetches account overview
+- [x] Create a class for the bot
+- [x] Create a function that creates and returns the avanza credentials
+- [x] Create a function that validates the user
+- [x] Create a function that validates totpSecret or totpCode
+- [x] Create a function that fetches account overview
 - [ ] Create constants for time periods, gateways
-- [ ] Create a function that fetches chart data within specified time interval
+- [x] Create a function that fetches chart data within specified time interval
