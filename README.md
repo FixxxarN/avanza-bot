@@ -28,3 +28,17 @@ List of modules used:
 - [ ] Create constants for time periods, gateways
 - [x] Create a function that fetches chart data within specified time interval
 - [x] Create a function that fetches stock information
+- [ ] Use websockets to fetch stock data everytime the stock updates
+- [ ] Use websockets to fetch stock data everytime the stock updates for multiple stocks
+- [ ] Draw the websocket data in a plot in real time
+- [ ] Implement a way for the bot to signal time for buy and time for sell
+- [ ] Add SMA
+- [ ] Add RSI
+- [ ] Create a function that fetches chart data for a specified interval and resolution
+- [ ] Add a list of stocks the bot should keep in mind when day trading
+- [ ] Save all trades to a json file with buyTimestamp, sellTimestamp, profit, loss, stock, buyPrice, sellPrice.
+- [ ] Test bot with fake money and fake functions that uses realtime data but uses fake buy and sell functions instead of real ones.
+
+
+
+
