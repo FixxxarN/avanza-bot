@@ -3,13 +3,13 @@ import pyotp
 import hashlib
 
 BASE_URL = "https://www.avanza.se"
-MIN_INACTIVE_MINUTES = 30
 MAX_INACTIVE_MINUTES = 60 * 24
 
 AUTHENTICATION_PATH = "/_api/authentication/sessions/usercredentials"
 TOTP_PATH = "/_api/authentication/sessions/totp"
 ACCOUNT_OVERVIEW_PATH = "/_api/account-overview/overview/categorizedAccounts"
 STOCK_CHART_DATA_PATH = "/_api/price-chart/stock/{}?timePeriod={}"
+STOCK_INFORMATION_PATH = "/_api/market-guide/stock/{}"
 
 class Bot:
   def __init__(self, credentials): 
@@ -23,7 +23,8 @@ class Bot:
     self._push_subscription_id = response_body["pushSubscriptionId"]
     self._customer_id = response_body["customerId"]
 
-    
+    self.balance = self.get_account_overview()["accountsSummary"]["buyingPower"]["value"]
+    self.print_account_information()
 
   def __authenticate(self, credentials):
     data = {
@@ -85,6 +86,21 @@ class Bot:
 
     return response.json()
 
+  def get_stock_information(self, stockId):
+    response = self._session.get(f"{BASE_URL}{STOCK_INFORMATION_PATH.format(stockId)}", headers={
+      "X-AuthenticationSession": self._authentication_session,
+      "X-SecurityToken": self._security_token
+    })
+
+    response.raise_for_status()
+
+    if len(response.content) == 0:
+      return None
+
+    return response.json()
+
+  def print_account_information(self):
+    print(self.balance)
 
 
 

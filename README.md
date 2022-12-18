@@ -5,7 +5,7 @@ This is not meant to be used by anyone. This repository is just a fun experiment
 This project takes inspiration from these repositories: https://github.com/Qluxzz/avanza & https://github.com/fhqvst/avanza
 
 List of modules used:
-- tensorflow
+- tensorflow (Skipping for now since it is really hard to predict accurately. Will keep the prediction files in the bot folder)
 - numpy
 - pandas
 - matplotlib
@@ -27,3 +27,4 @@ List of modules used:
 - [x] Create a function that fetches account overview
 - [ ] Create constants for time periods, gateways
 - [x] Create a function that fetches chart data within specified time interval
+- [x] Create a function that fetches stock information
