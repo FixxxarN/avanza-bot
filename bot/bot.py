@@ -1,6 +1,9 @@
 import requests
 import pyotp
 import hashlib
+from typing import Any, Callable, Sequence, Dict, Optional
+
+from bot.bot_socket import BotSocket
 
 BASE_URL = "https://www.avanza.se"
 MAX_INACTIVE_MINUTES = 60 * 24
@@ -22,6 +25,8 @@ class Bot:
     self._authentication_session = response_body["authenticationSession"]
     self._push_subscription_id = response_body["pushSubscriptionId"]
     self._customer_id = response_body["customerId"]
+
+    self._socket = BotSocket(self._push_subscription_id, self._session.cookies.get_dict())
 
     self.balance = self.get_account_overview()["accountsSummary"]["buyingPower"]["value"]
     self.print_account_information()
@@ -99,6 +104,15 @@ class Bot:
 
     return response.json()
 
+  async def subscribe_to_id(self, channel, id, callback: Callable[[str, dict], Any]):
+    await self.subscribe_to_ids(channel, [id], callback)
+
+  async def subscribe_to_ids(self, channel, ids, callback: Callable[[str, dict], Any]):
+    if not self._socket._connected:
+      await self._socket.init()
+
+    await self._socket.subscribe_to_ids(channel, ids, callback)
+  
   def print_account_information(self):
     print(self.balance)
 

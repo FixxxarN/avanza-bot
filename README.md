@@ -28,8 +28,8 @@ List of modules used:
 - [ ] Create constants for time periods, gateways
 - [x] Create a function that fetches chart data within specified time interval
 - [x] Create a function that fetches stock information
-- [ ] Use websockets to fetch stock data everytime the stock updates
-- [ ] Use websockets to fetch stock data everytime the stock updates for multiple stocks
+- [x] Use websockets to fetch stock data everytime the stock updates
+- [x] Use websockets to fetch stock data everytime the stock updates for multiple stocks
 - [ ] Draw the websocket data in a plot in real time
 - [ ] Implement a way for the bot to signal time for buy and time for sell
 - [ ] Add SMA
