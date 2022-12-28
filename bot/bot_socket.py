@@ -72,8 +72,6 @@ class BotSocket:
   async def __send(self, message):
     wrapped_message = [{ **message, 'id': str(self._message_count)}]
 
-    print(wrapped_message)
-
     await self._socket.send(json.dumps(wrapped_message))
 
     self._message_count = self._message_count + 1
@@ -141,8 +139,6 @@ class BotSocket:
       message = json.loads(message)[0]
       message_channel = message.get('channel')
       error = message.get('error')
-
-      print(f'Message: {message}')
 
       if error:
         print(error)

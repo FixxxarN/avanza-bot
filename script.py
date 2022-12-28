@@ -1,40 +1,28 @@
 import os
 import json
 import asyncio
+from datetime import date, timedelta
 
 from bot.bot import Bot
 from bot.bot_socket import BotSocket
 from bot.prediction import Prediction
 
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-CREDENTIALS_PATH = os.path.join(ROOT_DIR, 'credentials.json')
+import random as rnd
+import matplotlib.pyplot as plt
+from itertools import count
+from matplotlib.animation import FuncAnimation
 
-fileStream = open(CREDENTIALS_PATH)
-credentials = json.load(fileStream)
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIG_PATH = os.path.join(ROOT_DIR, 'config.json')
+
+fileStream = open(CONFIG_PATH)
+config = json.load(fileStream)
 fileStream.close()
 
-def callback(data):
-  print(data)
-
-async def subscribe_to_channel(bot: Bot):
-  await bot.subscribe_to_id('quotes', '5269', callback)
-  await bot.subscribe_to_id('quotes', '5447', callback)
-
 bot = Bot ({ 
-  "username": credentials["username"], 
-  "password": credentials["password"], 
-  "secret": credentials["secret"] 
+  "username": config["username"], 
+  "password": config["password"], 
+  "secret": config["secret"],
+  "accountId": config["accountId"],
+  "stockWatchlist": config["stockWatchlist"]
 })
-
-asyncio.get_event_loop().run_until_complete(subscribe_to_channel(bot))
-asyncio.get_event_loop().run_forever()
-
-# stock_information = bot.get_stock_information("1296604")
-
-# chartData = bot.get_stock_chart_data("1296604", "today")["ohlc"]
-
-# print(chartData)
-
-# prediction = Prediction()
-
-# print(f'Close {prediction.Predict([d["close"] for d in chartData], stock_information["name"])}')
