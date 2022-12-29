@@ -1,0 +1,138 @@
+Bought Humble Group for 170.43 
+Bought Ferronordic for 76.6 
+Bought Volvo Car B for 93.75 
+Bought Orrï¿½n Energy for 109.75 
+Sold Volvo Car B for 93.96 
+Bought Advanced SolTech Sweden for 107.39999999999999 
+Sold Advanced SolTech Sweden for 107.64000000000001 
+Sold Orrï¿½n Energy for 109.85 
+Bought Volvo Car B for 94.24 
+Sold Volvo Car B for 94.33 
+Sold Humble Group for 170.145 
+Bought Humble Group for 161.64000000000001 
+Bought Advanced SolTech Sweden for 125.09 
+Bought Volvo Car B for 94.3 
+Bought Orrï¿½n Energy for 87.96 
+Sold Humble Group for 162.27 
+Sold Volvo Car B for 94.4 
+Sold Orrï¿½n Energy for 88.0 
+Bought Humble Group for 135.375 
+Bought Volvo Car B for 94.56 
+Sold Volvo Car B for 94.55 
+Sold Humble Group for 135.825 
+Sold Advanced SolTech Sweden for 125.50999999999999 
+Bought Volvo Car B for 142.245 
+Sold Volvo Car B for 142.215 
+Bought Volvo Car B for 142.395 
+Bought Orrï¿½n Energy for 133.5 
+Sold Volvo Car B for 142.38 
+Bought Ovzon for 118.0 
+Sold Orrï¿½n Energy for 133.68 
+Sold Ferronordic for 77.6 
+Bought Orrï¿½n Energy for 156.24 
+Bought Volvo Car B for 95.26 
+Sold Orrï¿½n Energy for 156.94 
+Sold Volvo Car B for 95.02 
+Bought Volvo Car B for 142.635 
+Sold Volvo Car B for 142.72500000000002 
+Bought Volvo Car B for 142.82999999999998 
+Bought Advanced SolTech Sweden for 130.41 
+Bought Orrï¿½n Energy for 112.30000000000001 
+Sold Advanced SolTech Sweden for 128.73000000000002 
+Bought Advanced SolTech Sweden for 111.84 
+Sold Volvo Car B for 142.51500000000001 
+Bought Ferronordic for 77.6 
+
+---- Before change
+Bought Volvo Car B for 142.59 
+Sold Volvo Car B for 142.785 
+Bought Volvo Car B for 143.685 
+Sold Volvo Car B for 143.565 
+Bought Volvo Car B for 143.79 
+Sold Volvo Car B for 143.805 
+----
+Bought Volvo Car B for 144.09 
+Bought Orrï¿½n Energy for 133.8 
+Sold Volvo Car B for 143.745 
+Bought Humble Group for 150.96 
+Bought Volvo Car B for 95.91 
+Sold Volvo Car B for 96.04 
+Bought Ferronordic for 77.4 
+Bought Volvo Car B for 96.06 
+Sold Orrï¿½n Energy for 133.74 
+Sold Volvo Car B for 95.97 
+Sold Humble Group for 150.4 
+Bought Volvo Car B for 144.105 
+Sold Volvo Car B for 144.18 
+Bought Ovzon for 116.6 
+Bought Volvo Car B for 144.315 
+Bought Orrï¿½n Energy for 111.8 
+Sold Volvo Car B for 144.63 
+Bought Volvo Car B for 96.4 
+Sold Volvo Car B for 96.46 
+Sold Ovzon for 116.4 
+Bought Volvo Car B for 96.94 
+Sold Volvo Car B for 97.09 
+Sold Orrï¿½n Energy for 112.0 
+Bought Volvo Car B for 145.605 
+Bought Humble Group for 132.01999999999998 
+Sold Volvo Car B for 145.74 
+Bought Volvo Car B for 97.06 
+Sold Volvo Car B for 96.92 
+Bought Ovzon for 115.4 
+
+---- Sold some manually and added more stocks
+Bought Ericsson B for 124.36 
+Bought Samhällsbyggnadsbo. i Norden B for 154.125 
+Bought Sinch for 117.255 
+Bought Volvo Car B for 97.02 
+Bought Telia Company for 80.85 
+Sold Sinch for 117.33 
+Sold Samhällsbyggnadsbo. i Norden B for 154.305 
+Bought Ovzon for 113.6 
+Bought Sinch for 78.16 
+Bought Tele2 B for 86.1 
+Sold Sinch for 78.12 
+Sold Telia Company for 80.76 
+Bought Sinch for 78.13 
+Sold Sinch for 78.14 
+Bought Sinch for 78.07 
+Sold Volvo Car B for 96.93 
+Sold Sinch for 78.13 
+Sold Ericsson B for 124.32 
+Sold Tele2 B for 86.16 
+Bought Sinch for 117.375 
+Sold Sinch for 117.39000000000001 
+Bought Sinch for 117.57 
+Sold Sinch for 117.57 
+Bought Sinch for 117.53999999999999 
+Sold Sinch for 117.64500000000001 
+Bought Sinch for 117.51 
+Bought Samhällsbyggnadsbo. i Norden B for 137.72 
+Bought Volvo Car B for 97.15 
+Sold Sinch for 117.405 
+Sold Volvo Car B for 97.34 
+Bought Tele2 B for 86.2 
+Bought Sinch for 117.35999999999999 
+Bought Embracer Group B for 98.74 
+Sold Samhällsbyggnadsbo. i Norden B for 137.68 
+Sold Sinch for 117.51 
+Bought Sinch for 117.53999999999999 
+Sold Tele2 B for 86.24 
+Bought Volvo Car B for 97.28 
+Bought Samhällsbyggnadsbo. i Norden B for 103.22999999999999 
+Bought Ericsson B for 62.29 
+Sold Sinch for 117.53999999999999 
+Sold Embracer Group B for 98.93 
+Bought Sinch for 78.37 
+Sold Sinch for 78.4 
+Bought Sinch for 78.35 
+Sold Samhällsbyggnadsbo. i Norden B for 103.19999999999999 
+Sold Sinch for 78.38 
+Sold Ericsson B for 62.35 
+Sold Volvo Car B for 97.22 
+Bought Orrön Energy for 134.64000000000001 
+Bought Sinch for 117.63 
+Bought Tele2 B for 86.42 
+Sold Tele2 B for 86.46 
+Sold Sinch for 117.69 

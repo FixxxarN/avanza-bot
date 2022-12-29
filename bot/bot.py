@@ -4,13 +4,11 @@ import hashlib
 import asyncio
 import talib as ta
 import numpy as np
-import io
 import os
-import json
 import math
 
-from typing import Any, Callable, Sequence, Dict, Optional
-from datetime import date, timedelta
+from typing import Any, Callable
+from datetime import date
 from bot.bot_socket import BotSocket
 
 
@@ -43,8 +41,8 @@ class Bot:
     self._socket = BotSocket(self._push_subscription_id, self._session.cookies.get_dict())
 
     self.buyingPower = self.get_buying_power(config)
-    self.buyingPriceLimit = self.buyingPower * 0.25
-    self.stopLossLimit = 0.01
+    self.buyingPriceLimit = self.buyingPower * 0.15
+    self.stopLossLimit = 0.05
 
     self.activeStocks = {}
 
@@ -186,11 +184,11 @@ class Bot:
     if self.activeStocks[stockData['orderbookId']]["SMA_12"][-1] == self.activeStocks[stockData['orderbookId']]["SMA_26"][-1]:
       self.activeStocks[stockData['orderbookId']]["signal"] = True
 
-    amount = math.floor((self.buyingPower / self.buyingPriceLimit) / stockData["sellPrice"])
+    amount = math.floor(self.buyingPriceLimit / stockData["sellPrice"])
 
-    if (self.activeStocks[stockData['orderbookId']]["signal"] == True or self.activeStocks[stockData['orderbookId']]["RSI_14"][-1] < 30) and self.activeStocks[stockData['orderbookId']]["SMA_12"][-1] > self.activeStocks[stockData['orderbookId']]["SMA_26"][-1] and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] == 0:
+    if (self.activeStocks[stockData['orderbookId']]["signal"] == True and self.activeStocks[stockData['orderbookId']]["SMA_12"][-1] > self.activeStocks[stockData['orderbookId']]["SMA_26"][-1] and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] == 0) or (self.activeStocks[stockData['orderbookId']]["RSI_14"][-1] < 30 and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] == 0):
       if stockData["sellPrice"] <= self.buyingPriceLimit:
-        self.place_order(self.config, stockData['orderbookId'], "BUY", stockData["sellPrice"] * amount, amount)
+        self.place_order(self.config, stockData['orderbookId'], "BUY", stockData["sellPrice"], amount)
         self.activeStocks[stockData['orderbookId']]['owned_stocks_count'] = amount
         self.activeStocks[stockData['orderbookId']]['stop_loss'] = stockData["sellPrice"] - (stockData["sellPrice"] * self.stopLossLimit)
         print(f"Bought {self.activeStocks[stockData['orderbookId']]['name']} for {stockData['sellPrice'] * amount}")
@@ -198,13 +196,17 @@ class Bot:
         todays_result.write(f"Bought {self.activeStocks[stockData['orderbookId']]['name']} for {stockData['sellPrice'] * amount} \n")
         todays_result.close()
         self.activeStocks[stockData['orderbookId']]["signal"] = False
+        self.buyingPower = self.buyingPower - (stockData['sellPrice'] * amount)
+        self.buyingPriceLimit = self.buyingPower * 0.15
         
-    elif (self.activeStocks[stockData['orderbookId']]["signal"] == True or self.activeStocks[stockData['orderbookId']]["RSI_14"][-1] > 70) and self.activeStocks[stockData['orderbookId']]["SMA_12"][-1] < self.activeStocks[stockData['orderbookId']]["SMA_26"][-1] and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] > 0:
-      self.place_order(self.config, stockData['orderbookId'], "SELL", stockData["buyPrice"] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count'], self.activeStocks[stockData['orderbookId']]['owned_stocks_count'])
+    elif (self.activeStocks[stockData['orderbookId']]["signal"] == True and self.activeStocks[stockData['orderbookId']]["SMA_12"][-1] < self.activeStocks[stockData['orderbookId']]["SMA_26"][-1] and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] > 0)  or (self.activeStocks[stockData['orderbookId']]["RSI_14"][-1] > 70 and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] > 0):
+      self.place_order(self.config, stockData['orderbookId'], "SELL", stockData["buyPrice"], self.activeStocks[stockData['orderbookId']]['owned_stocks_count'])
       print(f"Sold {self.activeStocks[stockData['orderbookId']]['name']} for {stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']}")
       todays_result = open(filepath, append_write)
       todays_result.write(f"Sold {self.activeStocks[stockData['orderbookId']]['name']} for {stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} \n")
       todays_result.close()
+      self.buyingPower = self.buyingPower + (stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count'])
+      self.buyingPriceLimit = self.buyingPower * 0.15
       self.activeStocks[stockData['orderbookId']]['owned_stocks_count'] = 0
       self.activeStocks[stockData['orderbookId']]["signal"] = False
 
@@ -214,15 +216,16 @@ class Bot:
       todays_result = open(filepath, append_write)
       todays_result.write(f"Sold {self.activeStocks[stockData['orderbookId']]['name']} due to stop loss for {stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} \n")
       todays_result.close()
+      self.buyingPower = self.buyingPower + (stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count'])
+      self.buyingPriceLimit = self.buyingPower * 0.15
       self.activeStocks[stockData['orderbookId']]['owned_stocks_count'] = 0
 
   async def start(self, config):
     today = date.today()
-    yesterday = today - timedelta(days=1)
 
     for stock in config["stockWatchlist"]:
       stockInformation = self.get_stock_information(stock)
-      stockData = self.get_stock_chart_data(stock, fromTime=yesterday, toTime=yesterday)["ohlc"]
+      stockData = self.get_stock_chart_data(stock, fromTime=today, toTime=today)["ohlc"]
 
       SMA_26 = ta.SMA(np.array([d["close"] for d in stockData]), 26)
       SMA_12 = ta.SMA(np.array([d["close"] for d in stockData]), 12)

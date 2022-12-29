@@ -1,7 +1,7 @@
 import asyncio
 import json
 import websockets
-from typing import Any, Callable, Sequence
+from typing import Any, Callable
 
 WEBSOCKET_URL = "wss://www.avanza.se/_push/cometd"
 
