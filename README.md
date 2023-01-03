@@ -15,7 +15,7 @@ First day of using the bot the entire day
 Thoughts: The bot is currently buying and selling at weird times due to logic issues. Will try to fix this tomorrow
 
 
-### 2023-01-12
+### 2023-01-02
 <details>
   <summary>Result image</summary>
   
