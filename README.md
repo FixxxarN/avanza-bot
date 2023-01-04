@@ -23,3 +23,13 @@ Thoughts: The bot is currently buying and selling at weird times due to logic is
 </details>
 
 The results are getting better and better with everyday. Hoping for + tomorrow
+
+
+### 2023-01-04
+<details>
+  <summary>Result image</summary>
+  
+  ![image](https://user-images.githubusercontent.com/26044858/210625244-9fbde2ab-2553-43a0-8a2d-88ad3839276f.png)
+</details>
+
+Changed the strategy so the bot won much better trades
