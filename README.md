@@ -2,6 +2,15 @@
 
 This project takes inspiration from: https://github.com/Qluxzz/avanza
 
+### Strategies
+My first ever strategy was to buy when a SMA 12 crosses over a SMA 26 and to sell when the SMA 12 goes under the SMA 26.
+This didn't really work out. 
+
+After that i added RSI. The bot was supposed to buy when the first strategy gave a buy signal or if the RSI was below 30%. The bot was selling stocks if the first strategy gave a sell signal or if the RSI was above 70%.
+This didn't really work either.
+
+The bot now uses RSI, EMA and MACD to create buy signals. If the RSI is above 50% and the price of the stock is above the EMA 150 and the MACD line crosses over the MACD signal line then the bot would buy a certain stock. If the SMA 12 crosses under the SMA 26 the bot would sell the stock.
+
 ## Journal
 
 ### 2022-12-29
