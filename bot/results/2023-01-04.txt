@@ -1,0 +1,138 @@
+Bought 2 of Ericsson B stocks for 126.58 and each stock was worth 63.29. 
+Bought 13 of Storskogen Group B stocks for 110.75999999999999 and each stock was worth 8.52. 
+Bought 5 of Samhällsbyggnadsbo. i Norden B stocks for 95.975 and each stock was worth 19.195. 
+Bought 1 of Sinch stocks for 43.13 and each stock was worth 43.13. 
+Sold 5 of Samhällsbyggnadsbo. i Norden B stocks for 95.82499999999999 and each stock was worth 19.165. (-0.15000000000000568) 
+Sold 13 of Storskogen Group B stocks for 109.72 and each stock was worth 8.44. (-1.039999999999992) 
+Bought 1 of Tele2 B stocks for 88.08 and each stock was worth 88.08. 
+Sold 2 of Ericsson B stocks for 126.6 and each stock was worth 63.3. (0.01999999999999602) 
+Bought 5 of Samhällsbyggnadsbo. i Norden B stocks for 96.1 and each stock was worth 19.22. 
+Bought 11 of Storskogen Group B stocks for 93.83 and each stock was worth 8.53. 
+Sold 1 of Sinch stocks for 43.085 and each stock was worth 43.085. (-0.045000000000001705) 
+Sold 1 of Tele2 B stocks for 87.74 and each stock was worth 87.74. (-0.3400000000000034) 
+Sold 11 of Storskogen Group B stocks for 93.61 and each stock was worth 8.51. (-0.21999999999999886) 
+Bought 1 of Ericsson B stocks for 63.23 and each stock was worth 63.23. 
+Sold 5 of Samhällsbyggnadsbo. i Norden B stocks for 96.075 and each stock was worth 19.215. (-0.024999999999991473) 
+Bought 1 of Hennes & Mauritz B stocks for 117.84 and each stock was worth 117.84. 
+Bought 1 of Betsson B stocks for 88.43 and each stock was worth 88.43. 
+Bought 1 of Tele2 B stocks for 87.94 and each stock was worth 87.94. 
+Bought 9 of Storskogen Group B stocks for 76.75200000000001 and each stock was worth 8.528. 
+Bought 3 of Samhällsbyggnadsbo. i Norden B stocks for 57.824999999999996 and each stock was worth 19.275. 
+Bought 5 of Humble Group stocks for 49.2 and each stock was worth 9.84. 
+Sold 3 of Samhällsbyggnadsbo. i Norden B stocks for 57.54 and each stock was worth 19.18. (-0.2849999999999966) 
+Sold 9 of Storskogen Group B stocks for 76.23 and each stock was worth 8.47. (-0.5220000000000056) 
+Sold 1 of Hennes & Mauritz B stocks for 117.78 and each stock was worth 117.78. (-0.060000000000002274) 
+Sold 1 of Ericsson B stocks for 63.19 and each stock was worth 63.19. (-0.03999999999999915) 
+Bought 2 of Sinch stocks for 85.99 and each stock was worth 42.995. 
+Bought 1 of Ericsson B stocks for 63.34 and each stock was worth 63.34. 
+Sold 5 of Humble Group stocks for 48.925 and each stock was worth 9.785. (-0.2750000000000057) 
+Bought 1 of Husqvarna B stocks for 75.36 and each stock was worth 75.36. 
+Sold 1 of Betsson B stocks for 89.25 and each stock was worth 89.25. (0.8199999999999932) 
+Sold 1 of Ericsson B stocks for 63.36 and each stock was worth 63.36. (0.01999999999999602) 
+Bought 1 of Betsson B stocks for 89.32 and each stock was worth 89.32. 
+Bought 8 of Humble Group stocks for 78.52 and each stock was worth 9.815. 
+Sold 2 of Sinch stocks for 88.16 and each stock was worth 44.08. (2.1700000000000017) 
+Sold 1 of Betsson B stocks for 89.21 and each stock was worth 89.21. (-0.10999999999999943) 
+Sold 1 of Husqvarna B stocks for 75.26 and each stock was worth 75.26. (-0.09999999999999432) 
+Sold 8 of Humble Group stocks for 78.04 and each stock was worth 9.755. (-0.47999999999998977) 
+Bought 1 of Hennes & Mauritz B stocks for 118.3 and each stock was worth 118.3. 
+Sold 1 of Hennes & Mauritz B stocks for 118.32 and each stock was worth 118.32. (0.01999999999999602) 
+Bought 6 of Samhällsbyggnadsbo. i Norden B stocks for 116.39999999999999 and each stock was worth 19.4. 
+Bought 2 of Volvo Car B stocks for 99.33 and each stock was worth 49.665. 
+Sold 1 of Tele2 B stocks for 88.88 and each stock was worth 88.88. (0.9399999999999977) 
+Bought 3 of Telia Company stocks for 81.53999999999999 and each stock was worth 27.18. 
+Bought 1 of Embracer Group B stocks for 50.49 and each stock was worth 50.49. 
+Sold 6 of Samhällsbyggnadsbo. i Norden B stocks for 116.10000000000001 and each stock was worth 19.35. (-0.29999999999998295) 
+Bought 1 of Tele2 B stocks for 88.92 and each stock was worth 88.92. 
+Sold 3 of Telia Company stocks for 81.44999999999999 and each stock was worth 27.15. (-0.09000000000000341) 
+Sold 2 of Volvo Car B stocks for 99.2 and each stock was worth 49.6. (-0.12999999999999545) 
+Bought 5 of Samhällsbyggnadsbo. i Norden B stocks for 97.0 and each stock was worth 19.4. 
+Sold 1 of Embracer Group B stocks for 50.37 and each stock was worth 50.37. (-0.12000000000000455) 
+Bought 2 of Volvo Car B stocks for 99.2 and each stock was worth 49.6. 
+Sold 1 of Tele2 B stocks for 88.78 and each stock was worth 88.78. (-0.14000000000000057) 
+Bought 1 of Ericsson B stocks for 63.5 and each stock was worth 63.5. 
+Sold 2 of Volvo Car B stocks for 99.13 and each stock was worth 49.565. (-0.07000000000000739) 
+Sold 5 of Samhällsbyggnadsbo. i Norden B stocks for 96.6 and each stock was worth 19.32. (-0.4000000000000057) 
+Bought 2 of Embracer Group B stocks for 101.1 and each stock was worth 50.55. 
+Bought 2 of Sinch stocks for 88.61 and each stock was worth 44.305. 
+Bought 1 of Tele2 B stocks for 88.88 and each stock was worth 88.88. 
+Bought 4 of Samhällsbyggnadsbo. i Norden B stocks for 77.52 and each stock was worth 19.38. 
+Sold 1 of Ericsson B stocks for 63.38 and each stock was worth 63.38. (-0.11999999999999744) 
+Sold 4 of Samhällsbyggnadsbo. i Norden B stocks for 77.38 and each stock was worth 19.345. (-0.14000000000000057) 
+Bought 1 of Betsson B stocks for 89.58 and each stock was worth 89.58. 
+Sold 2 of Embracer Group B stocks for 100.98 and each stock was worth 50.49. (-0.11999999999999034) 
+Bought 1 of Ericsson B stocks for 63.48 and each stock was worth 63.48. 
+Bought 1 of Embracer Group B stocks for 50.54 and each stock was worth 50.54. 
+Bought 3 of Samhällsbyggnadsbo. i Norden B stocks for 58.095 and each stock was worth 19.365. 
+Sold 2 of Sinch stocks for 88.6 and each stock was worth 44.3. (-0.010000000000005116) 
+Sold 1 of Betsson B stocks for 89.55 and each stock was worth 89.55. (-0.030000000000001137) 
+Bought 4 of Orrön Energy stocks for 88.64 and each stock was worth 22.16. 
+Bought 1 of Volvo Car B stocks for 49.75 and each stock was worth 49.75. 
+Sold 1 of Embracer Group B stocks for 50.48 and each stock was worth 50.48. (-0.060000000000002274) 
+Sold 3 of Samhällsbyggnadsbo. i Norden B stocks for 58.065 and each stock was worth 19.355. (-0.030000000000001137) 
+Sold 4 of Orrön Energy stocks for 88.2 and each stock was worth 22.05. (-0.4399999999999977) 
+Sold 1 of Volvo Car B stocks for 49.595 and each stock was worth 49.595. (-0.15500000000000114) 
+Sold 1 of Ericsson B stocks for 63.61 and each stock was worth 63.61. (0.13000000000000256) 
+Bought 6 of Samhällsbyggnadsbo. i Norden B stocks for 116.37 and each stock was worth 19.395. 
+Bought 3 of Telia Company stocks for 81.66 and each stock was worth 27.22. 
+Bought 1 of Ericsson B stocks for 63.59 and each stock was worth 63.59. 
+Bought 1 of Embracer Group B stocks for 50.61 and each stock was worth 50.61. 
+Sold 1 of Ericsson B stocks for 63.55 and each stock was worth 63.55. (-0.04000000000000625) 
+Bought 8 of Humble Group stocks for 78.04 and each stock was worth 9.755. 
+Bought 2 of Swedencare stocks for 62.74 and each stock was worth 31.37. 
+Sold 1 of Tele2 B stocks for 89.04 and each stock was worth 89.04. (0.1600000000000108) 
+Sold 3 of Telia Company stocks for 81.48 and each stock was worth 27.16. (-0.1799999999999926) 
+Sold 6 of Samhällsbyggnadsbo. i Norden B stocks for 116.16 and each stock was worth 19.36. (-0.21000000000000796) 
+Bought 1 of Betsson B stocks for 89.07 and each stock was worth 89.07. 
+Bought 1 of Tele2 B stocks for 89.26 and each stock was worth 89.26. 
+Sold 1 of Embracer Group B stocks for 50.5 and each stock was worth 50.5. (-0.10999999999999943) 
+Bought 3 of Telia Company stocks for 81.6 and each stock was worth 27.2. 
+Bought 3 of Samhällsbyggnadsbo. i Norden B stocks for 58.08 and each stock was worth 19.36. 
+Sold 8 of Humble Group stocks for 77.44 and each stock was worth 9.68. (-0.6000000000000085) 
+Sold 2 of Swedencare stocks for 62.36 and each stock was worth 31.18. (-0.38000000000000256) 
+Bought 1 of Husqvarna B stocks for 74.88 and each stock was worth 74.88. 
+Sold 3 of Samhällsbyggnadsbo. i Norden B stocks for 58.050000000000004 and each stock was worth 19.35. (-0.02999999999999403) 
+Sold 1 of Betsson B stocks for 88.98 and each stock was worth 88.98. (-0.0899999999999892) 
+Sold 1 of Tele2 B stocks for 89.14 and each stock was worth 89.14. (-0.12000000000000455) 
+Sold 3 of Telia Company stocks for 81.66 and each stock was worth 27.22. (0.060000000000002274) 
+Bought 1 of Hennes & Mauritz B stocks for 119.16 and each stock was worth 119.16. 
+Bought 3 of Swedencare stocks for 94.11 and each stock was worth 31.37. 
+Bought 10 of Storskogen Group B stocks for 83.58000000000001 and each stock was worth 8.358. 
+Bought 1 of Sinch stocks for 44.245 and each stock was worth 44.245. 
+Bought 3 of Orrön Energy stocks for 66.24 and each stock was worth 22.08. 
+Sold 1 of Sinch stocks for 44.43 and each stock was worth 44.43. (0.18500000000000227) 
+Bought 1 of Volvo Car B stocks for 49.87 and each stock was worth 49.87. 
+Sold 1 of Hennes & Mauritz B stocks for 120.0 and each stock was worth 120.0. (0.8400000000000034) 
+Bought 1 of Ericsson B stocks for 63.95 and each stock was worth 63.95. 
+Sold 3 of Swedencare stocks for 93.81 and each stock was worth 31.27. (-0.29999999999999716) 
+Sold 10 of Storskogen Group B stocks for 83.69999999999999 and each stock was worth 8.37. (0.11999999999997613) 
+Sold 3 of Orrön Energy stocks for 66.15 and each stock was worth 22.05. (-0.0899999999999892) 
+Sold 1 of Volvo Car B stocks for 49.8 and each stock was worth 49.8. (-0.07000000000000028) 
+Sold 1 of Ericsson B stocks for 63.88 and each stock was worth 63.88. (-0.07000000000000028) 
+Bought 2 of Sinch stocks for 88.81 and each stock was worth 44.405. 
+Bought 12 of Storskogen Group B stocks for 101.232 and each stock was worth 8.436. 
+Bought 1 of Tele2 B stocks for 89.02 and each stock was worth 89.02. 
+Bought 2 of Swedencare stocks for 62.98 and each stock was worth 31.49. 
+Bought 2 of Telia Company stocks for 54.46 and each stock was worth 27.23. 
+Sold 2 of Telia Company stocks for 54.34 and each stock was worth 27.17. (-0.11999999999999744) 
+Bought 1 of Ericsson B stocks for 63.91 and each stock was worth 63.91. 
+Sold 1 of Tele2 B stocks for 88.88 and each stock was worth 88.88. (-0.14000000000000057) 
+Sold 1 of Husqvarna B stocks for 76.04 and each stock was worth 76.04. (1.1600000000000108) 
+Sold 2 of Swedencare stocks for 62.3 and each stock was worth 31.15. (-0.6799999999999997) 
+Bought 1 of Tele2 B stocks for 89.02 and each stock was worth 89.02. 
+Bought 2 of Telia Company stocks for 54.44 and each stock was worth 27.22. 
+Sold 2 of Sinch stocks for 89.19 and each stock was worth 44.595. (0.37999999999999545) 
+Sold 12 of Storskogen Group B stocks for 100.87200000000001 and each stock was worth 8.406. (-0.3599999999999852) 
+Sold 2 of Telia Company stocks for 54.34 and each stock was worth 27.17. (-0.09999999999999432) 
+Bought 2 of Sinch stocks for 89.23 and each stock was worth 44.615. 
+Sold 1 of Ericsson B stocks for 63.86 and each stock was worth 63.86. (-0.04999999999999716) 
+Bought 12 of Storskogen Group B stocks for 101.66399999999999 and each stock was worth 8.472. 
+Sold 1 of Tele2 B stocks for 88.92 and each stock was worth 88.92. (-0.09999999999999432) 
+Sold 2 of Sinch stocks for 88.58 and each stock was worth 44.29. (-0.6500000000000057) 
+Sold 12 of Storskogen Group B stocks for 100.36800000000001 and each stock was worth 8.364. (-1.295999999999978) 
+Bought 2 of Sinch stocks for 89.36 and each stock was worth 44.68. 
+Bought 6 of Samhällsbyggnadsbo. i Norden B stocks for 116.28 and each stock was worth 19.38. 
+Bought 11 of Storskogen Group B stocks for 92.75200000000001 and each stock was worth 8.432. 
+Bought 1 of Embracer Group B stocks for 50.29 and each stock was worth 50.29. 
+Bought 1 of Volvo Car B stocks for 49.735 and each stock was worth 49.735. 
+Sold 2 of Sinch stocks for 89.31 and each stock was worth 44.655. (-0.04999999999999716) 

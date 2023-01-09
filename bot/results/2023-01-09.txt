@@ -1,0 +1,28 @@
+Bought 2 of Volvo Car B stocks for 98.87 and each stock was worth 49.435 at 2023-01-09 09:17:18.460000. 
+Sold 2 of Volvo Car B stocks for 98.98 and each stock was worth 49.49 at 2023-01-09 09:18:57.969000. (0.10999999999999943) 
+Bought 2 of Volvo Car B stocks for 99.23 and each stock was worth 49.615 at 2023-01-09 09:20:01.906000. 
+Sold 2 of Volvo Car B stocks for 99.1 and each stock was worth 49.55 at 2023-01-09 09:21:12.782000. (-0.13000000000000966) 
+Bought 2 of Volvo Car B stocks for 99.35 and each stock was worth 49.675 at 2023-01-09 09:22:12.962000. 
+Sold 2 of Volvo Car B stocks for 99.67 and each stock was worth 49.835 at 2023-01-09 09:24:07. (0.3200000000000074) 
+Bought 2 of Volvo Car B stocks for 99.96 and each stock was worth 49.98 at 2023-01-09 09:24:21. 
+Sold 2 of Volvo Car B stocks for 99.7 and each stock was worth 49.85 at 2023-01-09 09:24:33. (-0.2599999999999909) 
+Bought 2 of Volvo Car B stocks for 100.14 and each stock was worth 50.07 at 2023-01-09 09:27:18.581000. 
+Sold 2 of Volvo Car B stocks for 100.2 and each stock was worth 50.1 at 2023-01-09 09:28:36. (0.060000000000002274) 
+Bought 2 of Volvo Car B stocks for 100.56 and each stock was worth 50.28 at 2023-01-09 09:30:30. 
+Sold 2 of Volvo Car B stocks for 100.16 and each stock was worth 50.08 at 2023-01-09 09:31:47. (-0.4000000000000057) 
+Bought 2 of Volvo Car B stocks for 100.18 and each stock was worth 50.09 at 2023-01-09 09:35:58. 
+Sold 2 of Volvo Car B stocks for 100.18 and each stock was worth 50.09 at 2023-01-09 09:38:03. (0.0) 
+Bought 2 of Volvo Car B stocks for 100.48 and each stock was worth 50.24 at 2023-01-09 09:39:53. 
+Sold 2 of Volvo Car B stocks for 100.46 and each stock was worth 50.23 at 2023-01-09 09:40:57.339000. (-0.020000000000010232) 
+Bought 2 of Volvo Car B stocks for 100.58 and each stock was worth 50.29 at 2023-01-09 09:41:19. 
+Sold 2 of Volvo Car B stocks for 100.54 and each stock was worth 50.27 at 2023-01-09 09:43:11. (-0.03999999999999204) 
+Bought 2 of Volvo Car B stocks for 100.7 and each stock was worth 50.35 at 2023-01-09 09:44:12. 
+Sold 2 of Volvo Car B stocks for 100.72 and each stock was worth 50.36 at 2023-01-09 09:45:53.186000. (0.01999999999999602) 
+Bought 2 of Volvo Car B stocks for 100.88 and each stock was worth 50.44 at 2023-01-09 09:49:48. 
+Sold 2 of Volvo Car B stocks for 100.84 and each stock was worth 50.42 at 2023-01-09 09:51:40. (-0.03999999999999204) 
+Bought 2 of Volvo Car B stocks for 101.04 and each stock was worth 50.52 at 2023-01-09 09:53:41.771000. 
+Sold 2 of Volvo Car B stocks for 100.82 and each stock was worth 50.41 at 2023-01-09 09:54:03. (-0.22000000000001307) 
+Bought 2 of Volvo Car B stocks for 101.1 and each stock was worth 50.55 at 2023-01-09 09:54:47.561000. 
+Sold 2 of Volvo Car B stocks for 100.86 and each stock was worth 50.43 at 2023-01-09 09:55:05.733000. (-0.23999999999999488) 
+Bought 2 of Volvo Car B stocks for 100.88 and each stock was worth 50.44 at 2023-01-09 09:55:27.886000. 
+Sold 2 of Volvo Car B stocks for 100.66 and each stock was worth 50.33 at 2023-01-09 09:55:40. (-0.21999999999999886) 

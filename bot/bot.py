@@ -2,14 +2,13 @@ import requests
 import pyotp
 import hashlib
 import asyncio
-import numpy as np
-import pandas as pd
 import os
 import math
 
 from typing import Any, Callable
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from bot.bot_socket import BotSocket
+from bot.technical_analysis import TechnicalAnalysis
 
 
 BASE_URL = "https://www.avanza.se"
@@ -159,64 +158,42 @@ class Bot:
 
     await self._socket.subscribe_to_ids(channel, ids, callback)
 
-  def sma(self, data, window):
-    s = pd.Series(data, dtype=pd.Float64Dtype())
-    ma = s.rolling(window=window).mean()
-    return np.array(ma)
-
-  def rsi(self, data, window):
-    s = pd.Series(data)
-    diff = s.diff(1)
-    diff.dropna(inplace=True)
-
-    positive = diff.copy()
-    negative = diff.copy()
-
-    positive[positive < 0] = 0
-    negative[positive > 0] = 0
-
-    average_gain = positive.rolling(window=window).mean()
-    average_loss = abs(negative.rolling(window=window).mean())
-
-    relative_strength = average_gain / average_loss
-    RSI = 100 - (100 / (1 + relative_strength))
-    return np.array(RSI)
-
-  def macd(self, data, window1, window2):
-    s = pd.Series(data, dtype=pd.Float64Dtype())
-    ma1 = s.rolling(window=window1).mean()
-    ma2 = s.rolling(window=window2).mean()
-
-    macd_line = ma1 - ma2
-
-    signal_line = macd_line.ewm(span=9).mean()
-
-    histogram = macd_line - signal_line
-
-    return macd_line, signal_line, histogram
-
   def handle_stock(self, data):
     stockData = data['data']
 
-    if self.activeStocks[stockData['orderbookId']]["currentTime"] == stockData["updatedDisplay"]:
+    prevTime = str(self.activeStocks[stockData['orderbookId']]["lastUpdated"])
+    prevTimestamp = prevTime[:10] + '.' + prevTime[-3:]
+
+    currentTime = str(stockData['lastUpdated'])
+    currentTimestamp = currentTime[:10] + '.' + currentTime[-3:]
+
+    start = datetime.utcfromtimestamp(float(prevTimestamp))
+    end = datetime.utcfromtimestamp(float(currentTimestamp))
+
+    delta = end - start
+    if delta.total_seconds() < 5:
       return
 
-    self.activeStocks[stockData['orderbookId']]['currentTime'] = stockData['updatedDisplay']
+    self.activeStocks[stockData['orderbookId']]['lastUpdated'] = stockData['lastUpdated']
 
-    previous_sma_12 = self.activeStocks[stockData['orderbookId']]["SMA_12"][-1]
-    previous_sma_26 = self.activeStocks[stockData['orderbookId']]["SMA_26"][-1]
+    # previous_sma_12 = self.activeStocks[stockData['orderbookId']]["SMA_12"][-1]
+    # previous_sma_26 = self.activeStocks[stockData['orderbookId']]["SMA_26"][-1]
+
+    previous_macd_line = self.activeStocks[stockData['orderbookId']]["MACD"][-1]
+    previous_macd_signal_line = self.activeStocks[stockData['orderbookId']]["MACD_SIGNAL"][-1]
 
     self.activeStocks[stockData['orderbookId']]["data"].append(stockData["lastPrice"]) 
 
-    self.activeStocks[stockData['orderbookId']]["SMA_26"] = self.sma(self.activeStocks[stockData['orderbookId']]["data"], 26)
-    self.activeStocks[stockData['orderbookId']]["SMA_12"] = self.sma(self.activeStocks[stockData['orderbookId']]["data"], 12)
-    self.activeStocks[stockData['orderbookId']]["RSI_14"] = self.rsi(self.activeStocks[stockData['orderbookId']]["data"], 14)
+    self.activeStocks[stockData['orderbookId']]["SMA_26"] = TechnicalAnalysis.sma(self.activeStocks[stockData['orderbookId']]["data"], 26)
+    self.activeStocks[stockData['orderbookId']]["SMA_12"] = TechnicalAnalysis.sma(self.activeStocks[stockData['orderbookId']]["data"], 12)
+    self.activeStocks[stockData['orderbookId']]["RSI_14"] = TechnicalAnalysis.rsi(self.activeStocks[stockData['orderbookId']]["data"], 14)
+    self.activeStocks[stockData['orderbookId']]["EMA_150"] = TechnicalAnalysis.ema(self.activeStocks[stockData['orderbookId']]["data"], 150)
 
-    # macd_line, signal_line, histogram = self.macd(self.activeStocks[stockData['orderbookId']]["data"], 12, 26)
+    macd_line, signal_line, histogram = TechnicalAnalysis.macd(self.activeStocks[stockData['orderbookId']]["data"], 12, 26)
 
-    # self.activeStocks[stockData['orderbookId']]["MACD"] = macd_line
-    # self.activeStocks[stockData['orderbookId']]["MACD_SIGNAL"] = signal_line
-    # self.activeStocks[stockData['orderbookId']]["MACD_HIST"] = histogram
+    self.activeStocks[stockData['orderbookId']]["MACD"] = macd_line
+    self.activeStocks[stockData['orderbookId']]["MACD_SIGNAL"] = signal_line
+    self.activeStocks[stockData['orderbookId']]["MACD_HIST"] = histogram
 
     filename = date.today().strftime('%Y-%m-%d') + '.txt'
     filepath = RESULTS_PATH + f'\{filename}'
@@ -226,51 +203,61 @@ class Bot:
     else:
       append_write = 'w'
 
-    current_sma_12 = 0
-    current_sma_26 = 0
+    # current_sma_12 = 0
+    # current_sma_26 = 0
+    current_macd_line = 0
+    current_macd_signal_line = 0
     
-    current_sma_12 = self.activeStocks[stockData['orderbookId']]["SMA_12"][-1]
-    current_sma_26 = self.activeStocks[stockData['orderbookId']]["SMA_26"][-1]
+    # current_sma_12 = self.activeStocks[stockData['orderbookId']]["SMA_12"][-1]
+    # current_sma_26 = self.activeStocks[stockData['orderbookId']]["SMA_26"][-1]
 
-    if previous_sma_12 < previous_sma_26 and current_sma_12 > current_sma_26 and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] == 0:
+    current_macd_line = self.activeStocks[stockData['orderbookId']]["MACD"][-1]
+    current_macd_signal_line = self.activeStocks[stockData['orderbookId']]["MACD_SIGNAL"][-1]
+
+
+    # if previous_sma_12 < previous_sma_26 and current_sma_12 > current_sma_26 and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] == 0:
+    #   self.activeStocks[stockData['orderbookId']]["signal"] = "BUY"
+
+    if previous_macd_line < previous_macd_signal_line and current_macd_line > current_macd_signal_line and self.activeStocks[stockData['orderbookId']]["EMA_150"][-1] < stockData["lastPrice"] and self.activeStocks[stockData['orderbookId']]["RSI_14"][-1] >= 50 and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] == 0:
       self.activeStocks[stockData['orderbookId']]["signal"] = "BUY"
-    if previous_sma_12 > previous_sma_26 and current_sma_12 < current_sma_26 and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] > 0:
+    if previous_macd_line > previous_macd_signal_line and current_macd_line < current_macd_signal_line and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] > 0:
       self.activeStocks[stockData['orderbookId']]["signal"] = "SELL"
-    if self.activeStocks[stockData['orderbookId']]["RSI_14"][-1] < 30 and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] == 0:
-      self.activeStocks[stockData['orderbookId']]["signal"] = "BUY"
-    if self.activeStocks[stockData['orderbookId']]["RSI_14"][-1] > 70 and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] > 0:
-      self.activeStocks[stockData['orderbookId']]["signal"] = "SELL"
+
+    # if self.activeStocks[stockData['orderbookId']]["RSI_14"][-1] < 30 and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] == 0:
+    #   self.activeStocks[stockData['orderbookId']]["signal"] = "BUY"
+    # if self.activeStocks[stockData['orderbookId']]["RSI_14"][-1] > 70 and self.activeStocks[stockData['orderbookId']]["owned_stocks_count"] > 0:
+    #   self.activeStocks[stockData['orderbookId']]["signal"] = "SELL"
 
     amount = math.floor(self.buyingPriceLimit / stockData["sellPrice"])
 
     if self.activeStocks[stockData['orderbookId']]["signal"] == "BUY":
       if stockData["sellPrice"] <= self.buyingPriceLimit:
-        self.place_order(self.config, stockData['orderbookId'], "BUY", stockData["sellPrice"], amount)
+        #self.place_order(self.config, stockData['orderbookId'], "BUY", stockData["sellPrice"], amount)
         self.activeStocks[stockData['orderbookId']]['owned_stocks_count'] = amount
-        self.activeStocks[stockData['orderbookId']]['stop_loss'] = stockData["sellPrice"] - (stockData["sellPrice"] * self.stopLossLimit)
-        print(f"""Bought {amount} of {self.activeStocks[stockData['orderbookId']]['name']} stocks for {stockData['sellPrice'] * amount} and each stock was worth {stockData['sellPrice']}""")
+        self.activeStocks[stockData['orderbookId']]['stop_loss'] = stockData["sellPrice"] * 0.001
+        self.activeStocks[stockData['orderbookId']]["boughtFor"] = stockData['sellPrice'] * amount
+        print(f"""Bought {amount} of {self.activeStocks[stockData['orderbookId']]['name']} stocks for {stockData['sellPrice'] * amount} and each stock was worth {stockData['sellPrice']} at {datetime.fromtimestamp(float(currentTimestamp))}.""")
         todays_result = open(filepath, append_write)
-        todays_result.write(f"Bought {amount} of {self.activeStocks[stockData['orderbookId']]['name']} stocks for {stockData['sellPrice'] * amount} and each stock was worth {stockData['sellPrice']} \n")
+        todays_result.write(f"Bought {amount} of {self.activeStocks[stockData['orderbookId']]['name']} stocks for {stockData['sellPrice'] * amount} and each stock was worth {stockData['sellPrice']} at {datetime.fromtimestamp(float(currentTimestamp))}. \n")
         todays_result.close()
         self.activeStocks[stockData['orderbookId']]["signal"] = "WAIT"
-        self.activeStocks[stockData['orderbookId']]["boughtFor"] = stockData['sellPrice'] * amount
         self.buyingPower = self.buyingPower - (stockData['sellPrice'] * amount)
         self.buyingPriceLimit = self.buyingPower * 0.15
     if self.activeStocks[stockData['orderbookId']]["signal"] == "SELL":
-      self.place_order(self.config, stockData['orderbookId'], "SELL", stockData["buyPrice"], self.activeStocks[stockData['orderbookId']]['owned_stocks_count'])
-      print(f"""Sold {self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} of {self.activeStocks[stockData['orderbookId']]['name']} stocks for {stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} and each stock was worth {stockData['buyPrice']}""")
+      #self.place_order(self.config, stockData['orderbookId'], "SELL", stockData["buyPrice"], self.activeStocks[stockData['orderbookId']]['owned_stocks_count'])
+      print(f"""Sold {self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} of {self.activeStocks[stockData['orderbookId']]['name']} stocks for {stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} and each stock was worth {stockData['buyPrice']} at {datetime.fromtimestamp(float(currentTimestamp))}. ({(stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']) - self.activeStocks[stockData['orderbookId']]["boughtFor"]})""")
       todays_result = open(filepath, append_write)
-      todays_result.write(f"Sold {self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} of {self.activeStocks[stockData['orderbookId']]['name']} stocks for {stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} and each stock was worth {stockData['buyPrice']} \n")
+      todays_result.write(f"Sold {self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} of {self.activeStocks[stockData['orderbookId']]['name']} stocks for {stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} and each stock was worth {stockData['buyPrice']} at {datetime.fromtimestamp(float(currentTimestamp))}. ({(stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']) - self.activeStocks[stockData['orderbookId']]['boughtFor']}) \n")
       todays_result.close()
       self.buyingPower = self.buyingPower + (stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count'])
       self.buyingPriceLimit = self.buyingPower * 0.15
       self.activeStocks[stockData['orderbookId']]['owned_stocks_count'] = 0
       self.activeStocks[stockData['orderbookId']]["signal"] = "WAIT"
     if stockData["buyPrice"] < self.activeStocks[stockData['orderbookId']]['stop_loss']:
-      self.place_order(self.config, stockData['orderbookId'], "SELL", stockData["buyPrice"], self.activeStocks[stockData['orderbookId']]['owned_stocks_count'])
-      print(f"""Sold {self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} of {self.activeStocks[stockData['orderbookId']]['name']} stocks for {stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} and each stock was worth {stockData['buyPrice']}""")
+      #self.place_order(self.config, stockData['orderbookId'], "SELL", stockData["buyPrice"], self.activeStocks[stockData['orderbookId']]['owned_stocks_count'])
+      print(f"""Sold {self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} of {self.activeStocks[stockData['orderbookId']]['name']} stocks for {stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} and each stock was worth {stockData['buyPrice']} at {datetime.fromtimestamp(float(currentTimestamp))}. ({(stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']) - self.activeStocks[stockData['orderbookId']]['boughtFor']})""")
       todays_result = open(filepath, append_write)
-      todays_result.write(f"Sold {self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} of {self.activeStocks[stockData['orderbookId']]['name']} stocks due to stop loss for {stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} and each stock was worth {stockData['buyPrice']} \n")
+      todays_result.write(f"Sold {self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} of {self.activeStocks[stockData['orderbookId']]['name']} stocks due to stop loss for {stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']} and each stock was worth {stockData['buyPrice']} at {datetime.fromtimestamp(float(currentTimestamp))}. ({(stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count']) - self.activeStocks[stockData['orderbookId']]['boughtFor']}) \n")
       todays_result.close()
       self.buyingPower = self.buyingPower + (stockData['buyPrice'] * self.activeStocks[stockData['orderbookId']]['owned_stocks_count'])
       self.buyingPriceLimit = self.buyingPower * 0.15
@@ -279,7 +266,7 @@ class Bot:
 
   async def start(self, config):
     today = date.today()
-    yesterday = today - timedelta(days=3)
+    yesterday = today - timedelta(days=1)
 
     for stock in config["stockWatchlist"]:
       stockInformation = self.get_stock_information(stock)
@@ -287,11 +274,14 @@ class Bot:
       todayData = self.get_stock_chart_data(stock, fromTime=today, toTime=today)["ohlc"]
       stockData = yesterdayData + todayData
 
-      SMA_26 = self.sma([d["close"] for d in stockData], 26)
-      SMA_12 = self.sma([d["close"] for d in stockData], 12)
-      RSI_14 = self.rsi([d["close"] for d in stockData], 14)
+      SMA_26 = TechnicalAnalysis.sma([d["close"] for d in stockData], 26)
+      SMA_12 = TechnicalAnalysis.sma([d["close"] for d in stockData], 12)
+      RSI_14 = TechnicalAnalysis.rsi([d["close"] for d in stockData], 14)
+      EMA_150 = TechnicalAnalysis.ema([d["close"] for d in stockData], 150)
+      macd_line, signal_line, histogram = TechnicalAnalysis.macd([d["close"] for d in stockData], 12, 26)
 
-      # macd_line, signal_line, histogram = self.macd([d["close"] for d in stockData], 12, 26)
+      now  = datetime.now()
+      ts = datetime.timestamp(now)
 
       self.activeStocks[stock] = { 
         "id": stock, 
@@ -300,13 +290,16 @@ class Bot:
         "SMA_26": SMA_26,
         "SMA_12": SMA_12,
         "RSI_14": RSI_14,
-        # "MACD": macd_line,
-        # "MACD_SIGNAL": signal_line,
-        # "MACD_HIST": histogram,
+        "EMA_150": EMA_150,
+        "MACD": macd_line,
+        "MACD_SIGNAL": signal_line,
+        "MACD_HIST": histogram,
         "owned_stocks_count": 0,
         "stop_loss": 0,
         "signal": "WAIT",
-        "currentTime": ""
+        "lastUpdated": str(ts)[:14]
       }
+
+      print(stockData)
 
       await self.subscribe_to_id('quotes', stock, self.handle_stock)
